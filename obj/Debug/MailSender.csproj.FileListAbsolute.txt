@@ -8,3 +8,5 @@ C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.csproj.GenerateResou
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.csproj.CoreCompileInputs.cache
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.exe
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.pdb
+C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.UserControls.UserControl_ChooseExcel.resources
+C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.UserControls.UserControl_EditMail.resources

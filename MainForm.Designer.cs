@@ -28,36 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel_ContentShow = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // button1
+            // panel_ContentShow
             // 
-            this.button1.Location = new System.Drawing.Point(511, 317);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel_ContentShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_ContentShow.Location = new System.Drawing.Point(0, 0);
+            this.panel_ContentShow.Name = "panel_ContentShow";
+            this.panel_ContentShow.Size = new System.Drawing.Size(1200, 600);
+            this.panel_ContentShow.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 600);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel_ContentShow);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel_ContentShow;
     }
 }
 
