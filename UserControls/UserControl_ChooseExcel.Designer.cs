@@ -33,6 +33,7 @@
             this.button_RestoreExcel = new System.Windows.Forms.Button();
             this.button_SaveExcel = new System.Windows.Forms.Button();
             this.button_OpenExcel = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,15 +85,24 @@
             this.button_OpenExcel.UseVisualStyleBackColor = true;
             this.button_OpenExcel.Click += new System.EventHandler(this.button_OpenExcel_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(22, 70);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1156, 457);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
+            // 
             // UserControl_ChooseExcel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button_RestoreExcel);
             this.Controls.Add(this.button_SaveExcel);
             this.Controls.Add(this.button_OpenExcel);
+            this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "UserControl_ChooseExcel";
             this.Size = new System.Drawing.Size(1200, 600);
@@ -108,5 +118,6 @@
         private System.Windows.Forms.Button button_RestoreExcel;
         private System.Windows.Forms.Button button_SaveExcel;
         private System.Windows.Forms.Button button_OpenExcel;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

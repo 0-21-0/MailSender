@@ -10,3 +10,15 @@ C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.exe
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.pdb
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.UserControls.UserControl_ChooseExcel.resources
 C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.UserControls.UserControl_EditMail.resources
+C:\Users\46833\source\repos\MailSender\bin\Debug\EPPlus.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\EPPlus.xml
+C:\Users\46833\source\repos\MailSender\obj\Debug\MailSender.csproj.CopyComplete
+C:\Users\46833\source\repos\MailSender\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\NPOI.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\NPOI.OOXML.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\46833\source\repos\MailSender\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\46833\source\repos\MailSender\bin\Debug\ICSharpCode.SharpZipLib.xml

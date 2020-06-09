@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
+using OfficeOpenXml;
 
 namespace MailSender.UserControls
 {
@@ -40,10 +41,10 @@ namespace MailSender.UserControls
             {
                 string strFileName = ofd.FileName;
                 //其他代码
-                dataGridView1.DataSource = null;
+                //dataGridView1.DataSource = null;
                 //ReadExcel(strFileName);
-                //var re = GetExcelTableByOleDB(ofd.FileName, ofd.SafeFileName);
-                OpenExcel(strFileName);
+                var re = GetExcelTableByOleDB(ofd.FileName, ofd.SafeFileName);
+                //OpenExcel(strFileName);
             }
         }
         private object OpenExcel(string fileName)
@@ -52,7 +53,7 @@ namespace MailSender.UserControls
             
             byte[] message = new byte[file.Length];
             file.Read(message, 0, (int)file.Length);
-            MessageBox.Show(message.ToString());
+            MessageBox.Show(Encoding.Unicode.GetString(message));
             file.Close();
             return fileName;
         }
@@ -76,54 +77,39 @@ namespace MailSender.UserControls
             }
             return vData;
         }
-        public DataTable GetExcelTableByOleDB(string strExcelPath, string tableName)
+        public object GetExcelTableByOleDB(string strExcelPath, string tableName)
         {
-            try
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            using (var package = new ExcelPackage(new FileInfo(strExcelPath)))
             {
-                DataTable dtExcel = new DataTable();
-                //数据表
-                DataSet ds = new DataSet();
-                //获取文件扩展名
-                string strExtension = System.IO.Path.GetExtension(strExcelPath);
-                string strFileName = System.IO.Path.GetFileName(strExcelPath);
-                //Excel的连接
-                OleDbConnection objConn = null;
-                switch (strExtension)
+                var r = richTextBox1;
+                richTextBox1.Text = "";
+                var d = package.Workbook.Worksheets[0].Cells;
+                int rows = d.Rows;
+                var f = d.DataValidation;
+                MessageBox.Show(f.ToString());
+                int columns = d.Columns;
+                for(int i = 1; i<= 3; i++)
                 {
-                    case ".xls":
-                        objConn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strExcelPath + ";" + "Extended Properties=\"Excel 8.0;HDR=NO;IMEX=1;\"");
-                        break;
-                    case ".xlsx":
-                        objConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + strExcelPath + ";" + "Extended Properties=\"Excel 12.0;HDR=NO;IMEX=1;\"");
-                        break;
-                    default:
-                        objConn = null;
-                        break;
+                    for(int j = 1; j<=4; j++)
+                    {
+                        var call = d[i, j];
+                        r.Text += call.Value;
+                        r.Text += " ";
+                    }
+                    r.Text += "\n";
                 }
-                if (objConn == null)
-                {
-                    return null;
-                }
-                objConn.Open();
-                //获取Excel中所有Sheet表的信息
-                //System.Data.DataTable schemaTable = objConn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, null);
-                //获取Excel的第一个Sheet表名
-                //string tableName = schemaTable.Rows[0][2].ToString().Trim();
-                string strSql = "select * from [" + tableName + "]";
-                //获取Excel指定Sheet表中的信息
-                OleDbCommand objCmd = new OleDbCommand(strSql, objConn);
-                OleDbDataAdapter myData = new OleDbDataAdapter(strSql, objConn);
-                myData.Fill(ds, strExcelPath);//填充数据
-                objConn.Close();
-                //dtExcel即为excel文件中指定表中存储的信息
-                dtExcel = ds.Tables[tableName];
-                return dtExcel;
+                //r.Text += d[d.End.Column,d.End.Row].Value;
+                //for(int i = 0; i < b.Index; i++)
+                //{
+                //    var col = b.Column(i);
+                //    richTextBox1.Text += col.ToString() + "\n";
+                //}
+                
+                //r.Text += b.Cells.FullAddress;
             }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return null;
-            }
+            object a = new object();
+            return a;
         }
     }
 }
