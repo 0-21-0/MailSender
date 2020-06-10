@@ -41,6 +41,7 @@ namespace MailSender.UserControls
             {
                 //var re = GetExcelTableByEPPuls(excelFullName);
                 GetExcelTableByNPOI(excelFullName);
+                
             }
         }
         private void ChooseExcel(out string fileName)
@@ -79,23 +80,6 @@ namespace MailSender.UserControls
                 fs.Close();
                 List<ISheet> sheets = new List<ISheet>();
                 List<List<string>> values = new List<List<string>>();
-                for(int i = 0; i < workbook.NumberOfSheets; i++)
-                {
-                    sheets.Add(workbook.GetSheetAt(i));
-                }
-                var sheet0 = sheets[0];
-                for (int i = sheet0.FirstRowNum; i < sheet0.LastRowNum; i++)
-                {
-                    var row = sheet0.GetRow(i);
-                    List<string> a = new List<string>();
-                    for(int j = 0; j < row.LastCellNum; j++)
-                    {
-                        a.Add(row.GetCell(j).ToString());
-                    }
-                    values.Add(a);
-                }
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = values;
             }
             catch (Exception e)
             {
