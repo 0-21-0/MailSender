@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.button_RestoreExcel = new System.Windows.Forms.Button();
             this.button_SaveExcel = new System.Windows.Forms.Button();
             this.button_OpenExcel = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 70);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1156, 457);
-            this.dataGridView1.TabIndex = 6;
             // 
             // button4
             // 
@@ -93,16 +84,25 @@
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(22, 70);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(1156, 457);
+            this.dataGridView1.TabIndex = 6;
+            // 
             // UserControl_ChooseExcel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button_RestoreExcel);
             this.Controls.Add(this.button_SaveExcel);
             this.Controls.Add(this.button_OpenExcel);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.richTextBox1);
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "UserControl_ChooseExcel";
             this.Size = new System.Drawing.Size(1200, 600);
@@ -112,12 +112,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button_RestoreExcel;
         private System.Windows.Forms.Button button_SaveExcel;
         private System.Windows.Forms.Button button_OpenExcel;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
