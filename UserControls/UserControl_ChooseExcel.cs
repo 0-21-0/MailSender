@@ -41,7 +41,9 @@ namespace MailSender.UserControls
             {
                 //var re = GetExcelTableByEPPuls(excelFullName);
                 GetExcelTableByNPOI(excelFullName);
-                
+                reoGridControl1.Load(excelFullName);
+                var sheet = reoGridControl1.CurrentWorksheet;
+
             }
         }
         private void ChooseExcel(out string fileName)

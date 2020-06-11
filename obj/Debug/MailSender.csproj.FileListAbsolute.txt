@@ -22,3 +22,5 @@ C:\Users\46833\source\repos\MailSender\bin\Debug\NPOI.OpenXmlFormats.dll
 C:\Users\46833\source\repos\MailSender\bin\Debug\BouncyCastle.Crypto.xml
 C:\Users\46833\source\repos\MailSender\bin\Debug\ICSharpCode.SharpZipLib.pdb
 C:\Users\46833\source\repos\MailSender\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\46833\source\repos\MailSender\bin\Debug\unvell.ReoGrid.dll
+C:\Users\46833\source\repos\MailSender\bin\Debug\unvell.ReoGrid.xml
