@@ -24,16 +24,6 @@ namespace MailSender.UserControls
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_OpenExcel_Click(object sender, EventArgs e)
         {
             ChooseExcel(out excelFullName);
@@ -103,6 +93,14 @@ namespace MailSender.UserControls
             }
             object a = new object();
             return a;
+        }
+
+        private void textBox_SelectDataTitle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(e.KeyChar == '\b' || (e.KeyChar >= '0' && e.KeyChar <= '9')))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

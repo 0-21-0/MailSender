@@ -34,6 +34,8 @@
             this.button_OpenExcel = new System.Windows.Forms.Button();
             this.reoGridControl1 = new unvell.ReoGrid.ReoGridControl();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_SelectDataTitle = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button4
@@ -44,7 +46,6 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "编辑邮件";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button_RestoreExcel
             // 
@@ -63,7 +64,6 @@
             this.button_SaveExcel.TabIndex = 4;
             this.button_SaveExcel.Text = "保存修改";
             this.button_SaveExcel.UseVisualStyleBackColor = true;
-            this.button_SaveExcel.Click += new System.EventHandler(this.button2_Click);
             // 
             // button_OpenExcel
             // 
@@ -101,10 +101,29 @@
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 548);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 22);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "选择数据标题行：";
+            // 
+            // textBox_SelectDataTitle
+            // 
+            this.textBox_SelectDataTitle.Location = new System.Drawing.Point(162, 545);
+            this.textBox_SelectDataTitle.Name = "textBox_SelectDataTitle";
+            this.textBox_SelectDataTitle.Size = new System.Drawing.Size(100, 29);
+            this.textBox_SelectDataTitle.TabIndex = 10;
+            this.textBox_SelectDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_SelectDataTitle_KeyPress);
+            // 
             // UserControl_ChooseExcel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.textBox_SelectDataTitle);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.reoGridControl1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button_RestoreExcel);
@@ -115,6 +134,7 @@
             this.Name = "UserControl_ChooseExcel";
             this.Size = new System.Drawing.Size(1200, 600);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,5 +145,7 @@
         private System.Windows.Forms.Button button_OpenExcel;
         private unvell.ReoGrid.ReoGridControl reoGridControl1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_SelectDataTitle;
     }
 }
