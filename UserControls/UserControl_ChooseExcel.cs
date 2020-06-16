@@ -30,9 +30,15 @@ namespace MailSender.UserControls
             if (excelFullName != null)
             {
                 //var re = GetExcelTableByEPPuls(excelFullName);
-                GetExcelTableByNPOI(excelFullName);
                 reoGridControl1.Load(excelFullName);
                 var sheet = reoGridControl1.CurrentWorksheet;
+                if (AutoGetDataTitleRowNumber() != 0)
+                {
+
+                }
+                //textBox_SelectDataTitle.Text
+                var temp = sheet.SelectionRange.Row.ToString();
+                MessageBox.Show(temp);
 
             }
         }
@@ -101,6 +107,13 @@ namespace MailSender.UserControls
             {
                 e.Handled = true;
             }
+        }
+
+        private int AutoGetDataTitleRowNumber()
+        {
+            var sheet = reoGridControl1.CurrentWorksheet;
+            
+            return 0;
         }
     }
 }
