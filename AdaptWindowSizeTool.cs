@@ -57,7 +57,7 @@ namespace MailSender
         /// <param name="control"></param>
         private void RecordSubControls(Control control)
         {
-            foreach(Control item in control.Controls)
+            foreach (Control item in control.Controls)
             {
                 if (item.Name.Trim() != "")
                 {
@@ -72,7 +72,7 @@ namespace MailSender
                         record.FontSize = item.Font.Size;
                     else
                         record.FontSize = (float)-1;
-                    subControlsDefultSize.Add(item.Name,record);
+                    subControlsDefultSize.Add(item.Name, record);
                 }
                 if (item.Controls.Count > 0)
                 {
@@ -101,6 +101,7 @@ namespace MailSender
             newFontSize = Math.Round(newFontSize, 2);
             newFontSize = Math.Round(newFontSize, 1);
             newFontSize = Math.Round(newFontSize);
+            if ((int)newFontSize == 0) return;
             control.Font = new Font(control.Font.FontFamily, (int)newFontSize);
         }
 
@@ -111,7 +112,7 @@ namespace MailSender
         private void ZoomSubControls(Control control)
         {
             ControlDefultSize record;
-            foreach(Control item in control.Controls)
+            foreach (Control item in control.Controls)
             {
                 if (item.Name.Trim() != "")
                 {
@@ -120,7 +121,7 @@ namespace MailSender
                     item.Top = (int)(record.Top * verticalZoomRate);
                     item.Width = (int)(record.Width * horizontalZoomRate);
                     item.Height = (int)(record.Height * verticalZoomRate);
-                    if(record.FontSize != (float)-1)
+                    if (record.FontSize != (float)-1)
                     {
                         ChangeControlFontSize(item, record.FontSize);
                     }
