@@ -36,6 +36,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_SelectDataTitle = new System.Windows.Forms.TextBox();
+            this.label_CellText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button4
@@ -118,10 +119,23 @@
             this.textBox_SelectDataTitle.TabIndex = 10;
             this.textBox_SelectDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_SelectDataTitle_KeyPress);
             // 
+            // label_CellText
+            // 
+            this.label_CellText.AutoSize = true;
+            this.label_CellText.Location = new System.Drawing.Point(630, 30);
+            this.label_CellText.Name = "label_CellText";
+            this.label_CellText.Size = new System.Drawing.Size(59, 22);
+            this.label_CellText.TabIndex = 11;
+            this.label_CellText.Text = "label2";
+            this.label_CellText.Visible = false;
+            // 
             // UserControl_ChooseExcel
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.label_CellText);
             this.Controls.Add(this.textBox_SelectDataTitle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reoGridControl1);
@@ -133,6 +147,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "UserControl_ChooseExcel";
             this.Size = new System.Drawing.Size(1200, 600);
+            this.SizeChanged += new System.EventHandler(this.UserControl_ChooseExcel_SizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +162,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_SelectDataTitle;
+        private System.Windows.Forms.Label label_CellText;
     }
 }

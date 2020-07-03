@@ -39,5 +39,11 @@ namespace MailSender
             panel_ContentShow.Controls.Clear();
             panel_ContentShow.Controls.Add(userControl);
         }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(panel_ContentShow.Size.ToString() + '\n' + panel_ContentShow.Controls[0].Size.ToString());
+            
+        }
     }
 }

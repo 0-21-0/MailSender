@@ -13,15 +13,18 @@ using OfficeOpenXml;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
+using unvell.ReoGrid;
 
 namespace MailSender.UserControls
 {
     public partial class UserControl_ChooseExcel : UserControl
     {
+        private AdaptWindowSizeTool adaptTool;
         public string excelFullName;
         public UserControl_ChooseExcel()
         {
             InitializeComponent();
+            adaptTool = new AdaptWindowSizeTool(this);
         }
 
         private void button_OpenExcel_Click(object sender, EventArgs e)
@@ -29,7 +32,6 @@ namespace MailSender.UserControls
             ChooseExcel(out excelFullName);
             if (excelFullName != null)
             {
-                //var re = GetExcelTableByEPPuls(excelFullName);
                 reoGridControl1.Load(excelFullName);
                 var sheet = reoGridControl1.CurrentWorksheet;
                 if (AutoGetDataTitleRowNumber() != 0)
@@ -37,11 +39,15 @@ namespace MailSender.UserControls
 
                 }
                 //textBox_SelectDataTitle.Text
-                var temp = sheet.SelectionRange.Row.ToString();
-                MessageBox.Show(temp);
-
+                reoGridControl1.CurrentWorksheetChanged += ReoGridControl1_CurrentWorksheetChanged;
             }
         }
+
+        private void ReoGridControl1_CurrentWorksheetChanged(object sender, EventArgs e)
+        {
+            ColWidthMatch(reoGridControl1.CurrentWorksheet);
+        }
+
         private void ChooseExcel(out string fileName)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -60,46 +66,6 @@ namespace MailSender.UserControls
                 fileName = null;
             }
         }
-        private void GetExcelTableByNPOI(string excelPath)
-        {
-            IWorkbook workbook = null;
-            string extension = System.IO.Path.GetExtension(excelPath);
-            try
-            {
-                FileStream fs = File.OpenRead(excelPath);
-                if (extension.Equals(".xls"))
-                {
-                    workbook = new HSSFWorkbook(fs);
-                }
-                else
-                {
-                    workbook = new XSSFWorkbook(fs);
-                }
-                fs.Close();
-                List<ISheet> sheets = new List<ISheet>();
-                List<List<string>> values = new List<List<string>>();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
-        public object GetExcelTableByEPPuls(string excelPath)
-        {
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-            using (var package = new ExcelPackage(new FileInfo(excelPath)))
-            {
-                var r = richTextBox1;
-                richTextBox1.Text = "";
-                var d = package.Workbook.Worksheets[0];
-                for(int i = 0; i < d.DataValidations.Count; i++)
-                {
-
-                }
-            }
-            object a = new object();
-            return a;
-        }
 
         private void textBox_SelectDataTitle_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -114,6 +80,39 @@ namespace MailSender.UserControls
             var sheet = reoGridControl1.CurrentWorksheet;
             
             return 0;
+        }
+
+        private void ColWidthMatch(Worksheet sheet)
+        {
+            int MaxColWidth;
+            foreach (var columnHeader in sheet.ColumnHeaders)
+            {
+                MaxColWidth = columnHeader.Width;
+                Cell cell = sheet.GetCell(0, columnHeader.Index);
+                if (cell == null)
+                    return;
+                label_CellText.Font = new Font(cell.Style.FontName, cell.Style.FontSize);
+                for (int i = 1; i < sheet.RowCount; i++)
+                {
+                    if (sheet[i, columnHeader.Index] == null)
+                        continue;
+                    label_CellText.Text = sheet[i, columnHeader.Index].ToString();
+                    if (label_CellText.Width >= MaxColWidth)
+                    {
+                        MaxColWidth = label_CellText.Width;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                columnHeader.Width = (ushort)MaxColWidth;
+            }
+        }
+
+        private void UserControl_ChooseExcel_SizeChanged(object sender, EventArgs e)
+        {
+            adaptTool.ZoomControl(this);
         }
     }
 }
